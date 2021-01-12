@@ -10,15 +10,17 @@ public class FirstScript {
         System.setProperty("webdriver.chrome.driver", "/Users/vigneshpalanikumar/Downloads/selenium-java-3.141.59/chromedriver");
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.amazon.in");
-
-//        To scroll the page down
-//        JavascriptExecutor jse = (JavascriptExecutor)driver;
-//        jse.executeScript("window.scrollBy(0,2000)");
-
-        driver.findElement(By.id("nav-hamburger-menu")).click();
-        driver.findElement(By.id("hmenu-customer-profile")).click();
-//        driver.findElement(By.xpath("//*[@id=\"password\"]/div[1]/div/div[1]/input")).sendKeys("happyearth");
-//        driver.findElement(By.xpath("//*[@id=\"view_container\"]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[1]/div[3]/div/div[1]/div/div/div[1]/div/div/input")).click();
-//        driver.findElement(By.xpath("//*[@id=\"passwordNext\"]/div/button/div[2]"));
+        driver.manage().window().maximize();
+        Thread.sleep(3000);
+        driver.findElement(By.id("twotabsearchtextbox")).sendKeys("Iphone");
+        driver.findElement(By.id("nav-search-submit-button")).click();
+        //driver.findElement(By.id("a-icon a-icon-checkbox")).click();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,1000)", "");
+        driver.findElement(By.linkText("256 GB & above")).click();
+        driver.navigate().to("https://www.facebook.com/");
+        Thread.sleep(3000);
+        driver.navigate().back();
+        driver.quit();
     }
 }
